@@ -8,7 +8,7 @@ import logoBoma from './assets/LogoBOMA2.png'
 import './App.css'
 
 const navigation = [
-  { label: 'Home', href: '#home' },
+  { label: 'Home', href: '#top' },
   { label: 'About', href: '#about' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Contact', href: '#contact' },
@@ -87,26 +87,39 @@ const congratulationsPosts = [
   },
 ]
 
-const contacts = [
+const footerQuickLinks = [
+  { label: 'Home', href: '#top' },
+  { label: 'Video Profile', href: '#about' },
+  { label: 'Congratulations', href: '#gallery' },
+]
+
+const contactDetails = [
   {
-    title: 'Sekretariat',
-    text: 'Gedung Sekretariat UPI Kampus Cibiru. (Ruangan ke 3 dari pintu masuk sebelah kiri)',
+    id: 'whatsapp',
+    icon: 'phone',
+    text: '+62 812-3456-7890 (WhatsApp)',
+    href: 'https://wa.me/6281234567890',
+    external: true,
   },
   {
-    title: 'Email',
+    id: 'secretariat',
+    icon: 'map-pin',
+    text: 'Gedung Sekretariat UPI Kampus Cibiru',
+  },
+  {
+    id: 'email',
+    icon: 'mail',
     text: 'bomaupicibir02@gmail.com',
-  },
-  {
-    title: 'WhatsApp',
-    text: '+62 812-3456-7890',
+    href: 'mailto:bomaupicibir02@gmail.com',
   },
 ]
 
 const socials = [
-  { label: 'Instagram', href: 'https://instagram.com/' },
-  { label: 'TikTok', href: 'https://tiktok.com/' },
-  { label: 'YouTube', href: 'https://youtube.com/' },
-  { label: 'Email', href: 'mailto:boma.cibiru@upi.edu' },
+  { label: 'Instagram', href: 'https://instagram.com/', icon: 'instagram', external: true },
+  { label: 'TikTok', href: 'https://tiktok.com/', icon: 'tiktok', external: true },
+  { label: 'YouTube', href: 'https://youtube.com/', icon: 'youtube', external: true },
+  { label: 'Email', href: 'mailto:bomaupicibir02@gmail.com', icon: 'mail' },
+  { label: 'WhatsApp', href: 'https://wa.me/6281234567890', icon: 'phone', external: true },
 ]
 
 const profileVideo = {
@@ -114,12 +127,161 @@ const profileVideo = {
     'https://www.youtube.com/embed/tMYFTGCwi3c?rel=0&controls=1&modestbranding=1&playsinline=1',
 }
 
+function AppIcon({ name }) {
+  const common = {
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    strokeWidth: '1.8',
+  }
+
+  switch (name) {
+    case 'phone':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            {...common}
+            d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.1 5.18 2 2 0 0 1 5.08 3h3a2 2 0 0 1 2 1.72l.35 2.55a2 2 0 0 1-.57 1.7L8.6 11.24a16 16 0 0 0 4.16 4.16l1.27-1.26a2 2 0 0 1 1.7-.58l2.55.35A2 2 0 0 1 22 16.92Z"
+          />
+          <path {...common} d="M15.5 4.5a5 5 0 0 1 4 4" />
+          <path {...common} d="M15.5 8a2 2 0 0 1 1.5 1.5" />
+        </svg>
+      )
+
+    case 'map-pin':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            {...common}
+            d="M12 21s6-5.03 6-11a6 6 0 1 0-12 0c0 5.97 6 11 6 11Z"
+          />
+          <circle {...common} cx="12" cy="10" r="2.4" />
+        </svg>
+      )
+
+    case 'mail':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect {...common} x="3" y="5" width="18" height="14" rx="2.5" />
+          <path {...common} d="m5 7 7 5 7-5" />
+        </svg>
+      )
+
+    case 'instagram':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect {...common} x="3.5" y="3.5" width="17" height="17" rx="5" />
+          <circle {...common} cx="12" cy="12" r="3.7" />
+          <path {...common} d="M17.6 6.7h.01" />
+        </svg>
+      )
+
+    case 'youtube':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            {...common}
+            d="M21 12.2c0 2.17-.25 3.59-.46 4.28a2.77 2.77 0 0 1-1.94 1.94c-.69.21-2.11.46-6.28.46s-5.59-.25-6.28-.46a2.77 2.77 0 0 1-1.94-1.94C3.89 15.79 3.64 14.37 3.64 12.2s.25-3.59.46-4.28A2.77 2.77 0 0 1 6.04 5.98c.69-.21 2.11-.46 6.28-.46s5.59.25 6.28.46a2.77 2.77 0 0 1 1.94 1.94c.21.69.46 2.11.46 4.28Z"
+          />
+          <path {...common} d="m10.2 9.3 5 2.9-5 2.9V9.3Z" />
+        </svg>
+      )
+
+    case 'tiktok':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path {...common} d="M14 4c.45 1.65 1.8 3.12 3.5 3.8" />
+          <path
+            {...common}
+            d="M10 10.3v6.05a2.75 2.75 0 1 1-2.75-2.75c.3 0 .58.05.85.14"
+          />
+          <path {...common} d="M14 4v8.9a4.7 4.7 0 0 1-4.7 4.7" />
+          <path {...common} d="M14 7.45a6.3 6.3 0 0 0 3.8 1.25" />
+        </svg>
+      )
+
+    case 'arrow-up':
+      return (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path {...common} d="M12 19V5" />
+          <path {...common} d="m6.5 10.5 5.5-5.5 5.5 5.5" />
+        </svg>
+      )
+
+    default:
+      return null
+  }
+}
+
 function App() {
   const highlightGridRef = useRef(null)
   const highlightPopoverRef = useRef(null)
   const [activeHighlightPopover, setActiveHighlightPopover] = useState(null)
+  const [isScrollTopVisible, setIsScrollTopVisible] = useState(false)
+  const [isPageReady, setIsPageReady] = useState(false)
 
   const activeHighlight = highlights.find((item) => item.id === activeHighlightPopover?.id) ?? null
+
+  useEffect(() => {
+    let secondFrameId = 0
+
+    const firstFrameId = window.requestAnimationFrame(() => {
+      secondFrameId = window.requestAnimationFrame(() => {
+        setIsPageReady(true)
+      })
+    })
+
+    return () => {
+      window.cancelAnimationFrame(firstFrameId)
+      window.cancelAnimationFrame(secondFrameId)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!isPageReady) {
+      return undefined
+    }
+
+    const revealElements = Array.from(document.querySelectorAll('.scroll-reveal'))
+
+    if (!revealElements.length) {
+      return undefined
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      revealElements.forEach((element) => {
+        element.classList.add('is-revealed')
+      })
+
+      return undefined
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return
+          }
+
+          entry.target.classList.add('is-revealed')
+          observer.unobserve(entry.target)
+        })
+      },
+      {
+        threshold: 0.18,
+        rootMargin: '0px 0px -12% 0px',
+      },
+    )
+
+    revealElements.forEach((element) => {
+      observer.observe(element)
+    })
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [isPageReady])
 
   useEffect(() => {
     if (!activeHighlightPopover) {
@@ -195,6 +357,19 @@ function App() {
     }
   }, [activeHighlightPopover])
 
+  useEffect(() => {
+    const updateScrollTopVisibility = () => {
+      setIsScrollTopVisible(window.scrollY > 360)
+    }
+
+    updateScrollTopVisibility()
+    window.addEventListener('scroll', updateScrollTopVisibility, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', updateScrollTopVisibility)
+    }
+  }, [])
+
   const handleHighlightClick = (event, itemId) => {
     if (activeHighlightPopover?.id === itemId) {
       setActiveHighlightPopover(null)
@@ -228,10 +403,11 @@ function App() {
   }
 
   return (
-    <div className="page-shell">
+    <div className={`page-shell${isPageReady ? ' page-shell--ready' : ''}`} id="top">
+      <div className="page-intro" aria-hidden="true" />
       <header className="site-header">
-        <div className="container site-header__inner">
-          <a className="brand" href="#home" aria-label="BOMA Home">
+        <div className="container site-header__inner page-enter page-enter--header">
+          <a className="brand" href="#top" aria-label="BOMA Home">
             <span className="brand__mark" aria-hidden="true">
               <img className="brand__logo" src={logoBoma} alt="" />
             </span>
@@ -385,7 +561,7 @@ function App() {
         <section className="section section--soft section--overlap" id="about">
           <div className="container">
             <div className="about-showcase">
-              <article className="profile-video-card">
+              <article className="profile-video-card scroll-reveal scroll-reveal--left">
                 <iframe
                   className="profile-video-card__frame"
                   src={profileVideo.embedUrl}
@@ -397,7 +573,10 @@ function App() {
                 />
               </article>
 
-              <div className="profile-copy">
+              <div
+                className="profile-copy scroll-reveal scroll-reveal--right"
+                style={{ '--reveal-delay': '120ms' }}
+              >
                 <span className="section-tag profile-copy__eyebrow">Who We Are</span>
                 <h2>Video Profile</h2>
                 <p>
@@ -414,7 +593,7 @@ function App() {
         <section className="section section--vision">
           <div className="container">
             <div className="vision-showcase">
-              <div className="vision-copy">
+              <div className="vision-copy scroll-reveal scroll-reveal--left">
                 <span className="section-tag vision-copy__eyebrow">Who We Are</span>
 
                 <div className="vision-copy__block">
@@ -440,7 +619,10 @@ function App() {
                 </div>
               </div>
 
-              <div className="vision-media">
+              <div
+                className="vision-media scroll-reveal scroll-reveal--right"
+                style={{ '--reveal-delay': '120ms' }}
+              >
                 <div className="vision-media__frame">
                   <img
                     src={visionImage}
@@ -459,19 +641,20 @@ function App() {
 
         <section className="section section--accent section--congrats" id="gallery">
           <div className="container">
-            <div className="section-heading congrats-heading">
+            <div className="section-heading congrats-heading scroll-reveal">
               <h2>Congratulations!</h2>
             </div>
 
             <div className="gallery-grid gallery-grid--instagram">
               {congratulationsPosts.map((item, index) => (
                 <a
-                  className="gallery-card gallery-card--instagram"
+                  className="gallery-card gallery-card--instagram scroll-reveal scroll-reveal--card"
                   href={item.href}
                   key={item.href}
                   target="_blank"
                   rel="noreferrer"
                   aria-label={`Buka postingan Instagram prestasi ${index + 1}`}
+                  style={{ '--enter-delay': `${760 + index * 90}ms` }}
                 >
                   <img src={item.image} alt={item.alt} />
                 </a>
@@ -481,72 +664,112 @@ function App() {
         </section>
 
         <section className="section section--contact" id="contact">
-          <div className="container contact-layout">
-            <div className="contact-copy">
-              <div className="section-heading section-heading--left">
-                <span className="section-tag">Contact</span>
-                <h2>Contact us</h2>
-                <p>
-                Need further information? Don't hesitate to contact us!
-                </p>
+          <div className="contact-banner">
+            <div className="container contact-banner__inner">
+              <div className="contact-banner__badge" aria-hidden="true">
+                <AppIcon name="phone" />
               </div>
 
-              <div className="contact-card-grid">
-                {contacts.map((item) => (
-                  <article className="contact-card" key={item.title}>
-                    <span>{item.title}</span>
-                    <strong>{item.text}</strong>
-                  </article>
-                ))}
+              <div className="contact-banner__content">
+                <h2>
+                  Need further information?
+                  <span>Don&apos;t hesitate to contact us!</span>
+                </h2>
+
+                <a
+                  className="contact-banner__action"
+                  href="mailto:bomaupicibir02@gmail.com?subject=Halo%20BOMA%20UPI%20Cibiru"
+                >
+                  Contact Us
+                </a>
               </div>
             </div>
-
-            <form className="contact-form" onSubmit={(event) => event.preventDefault()}>
-              <label>
-                Nama
-                <input type="text" placeholder="Nama lengkap" />
-              </label>
-              <label>
-                Email
-                <input type="email" placeholder="email@contoh.com" />
-              </label>
-              <label>
-                Pesan
-                <textarea
-                  rows="5"
-                  placeholder="Tulis pesan, pertanyaan, atau ajakan kolaborasi di sini."
-                />
-              </label>
-              <button className="button button--primary" type="submit">
-                Kirim Pesan
-              </button>
-            </form>
           </div>
         </section>
       </main>
 
       <footer className="site-footer">
         <div className="container site-footer__inner">
-          <div>
-            <strong>BOMA UPI Kampus Cibiru</strong>
-            <p>
-              Dummy landing page dengan konsep yang diarahkan mendekati referensi:
-              airy, editorial, elegan, dan tetap responsif.
-            </p>
+          <div className="site-footer__column">
+            <h3>Quick Links</h3>
+            <nav className="footer-link-list" aria-label="Footer quick links">
+              {footerQuickLinks.map((item) => (
+                <a key={item.href} href={item.href}>
+                  {item.label}
+                </a>
+              ))}
+            </nav>
           </div>
 
-          <div className="social-links" aria-label="Social media links">
-            {socials.map((item) => (
-              <a key={item.label} href={item.href} target="_blank" rel="noreferrer">
-                {item.label}
-              </a>
-            ))}
+          <div className="site-footer__column site-footer__column--brand">
+            <a className="site-footer__brand" href="#top" aria-label="BOMA Home">
+              <img src={logoBoma} alt="Logo BOMA UPI Kampus Cibiru" />
+            </a>
+
+            <div className="footer-socials" aria-label="Social media links">
+              {socials.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  target={item.external ? '_blank' : undefined}
+                  rel={item.external ? 'noreferrer' : undefined}
+                  aria-label={item.label}
+                >
+                  <AppIcon name={item.icon} />
+                  <span className="sr-only">{item.label}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="site-footer__column">
+            <h3>Contact Info</h3>
+            <div className="footer-contact-list">
+              {contactDetails.map((item) => {
+                const content = (
+                  <>
+                    <span className="footer-contact-item__icon" aria-hidden="true">
+                      <AppIcon name={item.icon} />
+                    </span>
+                    <span className="footer-contact-item__text">{item.text}</span>
+                  </>
+                )
+
+                if (!item.href) {
+                  return (
+                    <div className="footer-contact-item" key={item.id}>
+                      {content}
+                    </div>
+                  )
+                }
+
+                return (
+                  <a
+                    className="footer-contact-item"
+                    href={item.href}
+                    key={item.id}
+                    target={item.external ? '_blank' : undefined}
+                    rel={item.external ? 'noreferrer' : undefined}
+                  >
+                    {content}
+                  </a>
+                )
+              })}
+            </div>
           </div>
         </div>
 
         <div className="container site-footer__bottom">
           <p>Copyright © 2026 BOMA UPI Kampus Cibiru. All rights reserved.</p>
         </div>
+
+        <a
+          className={`scroll-top${isScrollTopVisible ? ' is-visible' : ''}`}
+          href="#top"
+          aria-label="Kembali ke atas"
+        >
+          <AppIcon name="arrow-up" />
+        </a>
       </footer>
     </div>
   )
