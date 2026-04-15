@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import SiteFooter from './components/SiteFooter.jsx'
 import SiteHeader from './components/SiteHeader.jsx'
 import AboutPage from './pages/AboutPage.jsx'
@@ -32,23 +32,63 @@ function getCurrentLocation() {
 function App() {
   const [isPageReady, setIsPageReady] = useState(false)
   const [locationState, setLocationState] = useState(getCurrentLocation)
+  const hasMountedRef = useRef(false)
+  const previousPathRef = useRef(locationState.pathname)
+  const pageReadyFrameIdsRef = useRef([])
   const currentPath = locationState.pathname
   const PageComponent = routes[currentPath] ?? HomePage
 
-  useEffect(() => {
-    let secondFrameId = 0
-
-    const firstFrameId = window.requestAnimationFrame(() => {
-      secondFrameId = window.requestAnimationFrame(() => {
-        setIsPageReady(true)
-      })
+  const clearPageReadyFrames = useCallback(() => {
+    pageReadyFrameIdsRef.current.forEach((frameId) => {
+      window.cancelAnimationFrame(frameId)
     })
 
-    return () => {
-      window.cancelAnimationFrame(firstFrameId)
-      window.cancelAnimationFrame(secondFrameId)
-    }
+    pageReadyFrameIdsRef.current = []
   }, [])
+
+  const playPageEntrance = useCallback(() => {
+    clearPageReadyFrames()
+    setIsPageReady(false)
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setIsPageReady(true)
+      return
+    }
+
+    const firstFrameId = window.requestAnimationFrame(() => {
+      const secondFrameId = window.requestAnimationFrame(() => {
+        setIsPageReady(true)
+        pageReadyFrameIdsRef.current = []
+      })
+
+      pageReadyFrameIdsRef.current = [firstFrameId, secondFrameId]
+    })
+
+    pageReadyFrameIdsRef.current = [firstFrameId]
+  }, [clearPageReadyFrames])
+
+  useEffect(() => {
+    playPageEntrance()
+    hasMountedRef.current = true
+
+    return () => {
+      clearPageReadyFrames()
+    }
+  }, [clearPageReadyFrames, playPageEntrance])
+
+  useLayoutEffect(() => {
+    if (!hasMountedRef.current) {
+      return
+    }
+
+    const previousPath = previousPathRef.current
+
+    if (currentPath !== previousPath) {
+      playPageEntrance()
+    }
+
+    previousPathRef.current = currentPath
+  }, [currentPath, playPageEntrance])
 
   useEffect(() => {
     const syncLocation = () => {
