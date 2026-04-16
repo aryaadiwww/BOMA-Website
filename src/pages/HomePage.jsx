@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import AppIcon from '../components/AppIcon.jsx'
-import heroImage from '../assets/gedungbiru.jpg'
-import prestasiImage1 from '../assets/prestasi1.jpg'
-import prestasiImage2 from '../assets/prestasi2.jpg'
-import prestasiImage3 from '../assets/prestasi3.jpg'
-import visionImage from '../assets/visimisi.jpeg'
+import heroImage from '../assets/home/gedungbiru.jpg'
+import prestasiImage1 from '../assets/home/prestasi1.jpg'
+import prestasiImage2 from '../assets/home/prestasi2.jpg'
+import prestasiImage3 from '../assets/home/prestasi3.jpg'
+import visionImage from '../assets/home/visimisi.jpeg'
 
 const highlights = [
   {

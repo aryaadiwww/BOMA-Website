@@ -1,6 +1,6 @@
-import logoBoma from '../assets/LogoBOMA2.png'
-import logoCibiru from '../assets/logocibiru.png'
-import logoUpi from '../assets/logoupi.png'
+import logoBoma from '../assets/logo/LogoBOMA2.png'
+import logoCibiru from '../assets/logo/logocibiru.png'
+import logoUpi from '../assets/logo/logoupi.png'
 
 export const siteNavigation = [
   { label: 'Home', href: '/', matchPath: '/' },

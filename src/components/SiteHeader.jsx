@@ -1,5 +1,5 @@
 import InternalLink from './InternalLink.jsx'
-import logoBoma from '../assets/LogoBOMA2.png'
+import logoBoma from '../assets/logo/LogoBOMA2.png'
 import { quickActions, siteNavigation } from '../data/siteData.js'
 
 function SiteHeader({ currentPath, onNavigate }) {

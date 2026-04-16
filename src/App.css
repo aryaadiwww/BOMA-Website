@@ -277,7 +277,7 @@
     radial-gradient(circle at 16% 28%, rgba(var(--color-primary-rgb), 0.06), transparent 24%),
     radial-gradient(circle at 82% 24%, rgba(var(--color-secondary-rgb), 0.12), transparent 26%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 28%),
-    url('./assets/background1.jpeg');
+    url('./assets/home/background1.jpeg');
   background-position:
     center,
     center,
@@ -1100,7 +1100,7 @@
       rgba(var(--color-primary-rgb), 0.62) 100%
     ),
     radial-gradient(circle at 50% 60%, rgba(var(--color-secondary-rgb), 0.12), transparent 24%),
-    url('./assets/lapang.png');
+    url('./assets/home/lapang.png');
   background-position: center 44%;
   background-repeat: no-repeat;
   background-size: 130% auto;
