@@ -50,11 +50,19 @@ const missionItems = [
 ]
 
 const branchesData = [
-  { name: 'Futsal', logo: logofutsal },
-  { name: 'Voli', logo: logovoli },
-  { name: 'Basket', logo: logobasket },
-  { name: 'Badminton', logo: logobadminton },
-  { name: 'Catur', logo: logocatur },
+  { name: 'Futsal', logo: logofutsal, instagramUrl: 'https://www.instagram.com/futsal_upicibiru/' },
+  { name: 'Voli', logo: logovoli, instagramUrl: 'https://www.instagram.com/voli.upicibiru/' },
+  {
+    name: 'Basket',
+    logo: logobasket,
+    instagramUrl: 'https://www.instagram.com/basketball_upicbr/',
+  },
+  {
+    name: 'Badminton',
+    logo: logobadminton,
+    instagramUrl: 'https://www.instagram.com/badminton_upicibiru/',
+  },
+  { name: 'Catur', logo: logocatur, instagramUrl: 'https://www.instagram.com/boma_upicibiru/' },
 ]
 
 const pengurusData = [
@@ -346,16 +354,20 @@ function AboutPage() {
 
             <div className="about-branches__grid">
               {branchesData.map((branch, index) => (
-                <div
+                <a
                   className="about-branch-card scroll-reveal scroll-reveal--card"
+                  href={branch.instagramUrl}
                   key={branch.name}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Buka profil Instagram ${branch.name}`}
                   style={{ '--reveal-delay': `${index * 80}ms` }}
                 >
                   <div className="about-branch-card__circle">
                     <img src={branch.logo} alt={branch.name} />
                   </div>
                   <p className="about-branch-card__name">{branch.name}</p>
-                </div>
+                </a>
               ))}
             </div>
           </div>

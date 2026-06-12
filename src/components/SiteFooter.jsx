@@ -100,7 +100,7 @@ function SiteFooter({ onNavigate }) {
       </div>
 
       <div className="container site-footer__bottom">
-        <p>Copyright © 2025 BOMA UPI Kampus Cibiru. All rights reserved.</p>
+        <p>Copyright © 2025 Arya Adi Wijaya. All rights reserved.</p>
       </div>
 
       <button

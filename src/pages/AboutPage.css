@@ -4,7 +4,7 @@
 
 .about-hero {
   position: relative;
-  padding-bottom: clamp(5rem, 9vw, 7rem);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
 }
 
 .about-hero__intro {
@@ -12,8 +12,8 @@
   isolation: isolate;
   display: grid;
   align-items: end;
-  min-height: clamp(26rem, 58svh, 34rem);
-  padding: clamp(4.5rem, 8vw, 6rem) 0 clamp(11rem, 16vw, 14rem);
+  min-height: clamp(24rem, 58svh, 34rem);
+  padding: clamp(3.8rem, 7vw, 6rem) 0 clamp(8rem, 15vw, 14rem);
 }
 
 .about-hero__intro::before,
@@ -54,7 +54,7 @@
 .about-hero__copy {
   position: relative;
   z-index: 3;
-  width: min(100%, 66rem);
+  width: min(100%, 64rem);
   display: grid;
   justify-items: center;
   gap: clamp(2rem, 4vw, 3rem);
@@ -62,7 +62,7 @@
 }
 
 .about-hero__copy h1 {
-  font-size: clamp(4rem, 7vw, 6rem);
+  font-size: clamp(3.2rem, 7vw, 6rem);
 }
 
 .about-hero__text {
@@ -106,7 +106,7 @@
 .about-vision__row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: clamp(4rem, 8vw, 7.2rem);
+  column-gap: clamp(2.5rem, 7vw, 7.2rem);
   align-items: center;
 }
 
@@ -123,8 +123,8 @@
 .about-vision__image-frame {
   position: relative;
   overflow: hidden;
-  width: min(100%, clamp(18rem, 30vw, 26rem));
-  border-radius: 2.4rem;
+  width: min(100%, clamp(17rem, 30vw, 26rem));
+  border-radius: clamp(1.5rem, 3vw, 2.4rem);
   border: 1px solid rgba(var(--color-primary-rgb), 0.08);
   background: rgba(var(--color-secondary-rgb), 0.72);
   box-shadow:
@@ -159,8 +159,8 @@
 }
 
 .about-vision__copy {
-  width: min(100%, clamp(18rem, 30vw, 26rem));
-  max-width: clamp(18rem, 30vw, 26rem);
+  width: min(100%, clamp(17rem, 30vw, 26rem));
+  max-width: clamp(17rem, 30vw, 26rem);
   margin: 0;
   padding: clamp(0.25rem, 0.8vw, 0.75rem) 0;
 }
@@ -230,7 +230,7 @@
 
 .about-branches .section-heading h2 {
   color: var(--color-primary);
-  margin-bottom: 6rem;
+  margin-bottom: clamp(2.5rem, 7vw, 6rem);
 }
 
 .about-branches .section-tag {
@@ -240,7 +240,7 @@
 .about-branches__grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  gap: clamp(1rem, 3vw, 2.5rem);
   justify-items: center;
   align-items: center;
   margin-bottom: clamp(1rem, 3vw, 2rem);
@@ -282,13 +282,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: clamp(0.7rem, 1.6vw, 1rem);
   width: 100%;
+  border-radius: clamp(1rem, 3vw, 1.6rem);
+  text-decoration: none;
+}
+
+.about-branch-card:focus-visible {
+  outline: 3px solid rgba(var(--color-primary-rgb), 0.68);
+  outline-offset: 0.45rem;
 }
 
 .about-branch-card__circle {
-  width: clamp(140px, 26vw, 220px);
-  height: clamp(140px, 26vw, 220px);
+  width: clamp(7.5rem, 15vw, 13.75rem);
+  height: clamp(7.5rem, 15vw, 13.75rem);
   border-radius: 50%;
   background: #ffffff;
   display: flex;
@@ -304,7 +311,7 @@
 }
 
 .about-branch-card__circle:active {
-  transform: scale(1.6) rotate(26deg);
+  transform: scale(1.16) rotate(14deg);
   box-shadow: 0 22px 50px rgba(var(--color-primary-rgb), 0.2);
 }
 
@@ -316,11 +323,11 @@
 
 .about-branch-card__name {
   color: var(--color-primary);
-  font-size: clamp(1.2rem, 1.6vw, 1.4rem);
+  font-size: clamp(0.95rem, 1.4vw, 1.4rem);
   font-weight: 900;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
   margin: 0;
 }
 
@@ -348,7 +355,7 @@
 
 .about-pengurus__rows {
   display: grid;
-  gap: 2rem;
+  gap: clamp(1.4rem, 3vw, 2rem);
 }
 
 .about-pengurus__row h3 {
@@ -370,7 +377,7 @@
 .about-pengurus__viewport {
   overflow: hidden;
   width: 100%;
-  padding: 0.25rem 0;
+  padding: 0.35rem 0;
 }
 
 .about-pengurus__slide {
@@ -426,12 +433,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: clamp(0.75rem, 1.6vw, 1rem);
   min-width: 0;
   min-height: 100%;
   background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(var(--color-primary-rgb), 0.08);
-  border-radius: 1.5rem;
+  border-radius: clamp(1.1rem, 2.2vw, 1.5rem);
   padding: clamp(1rem, 2vw, 1.5rem);
   box-shadow: 0 12px 34px rgba(var(--color-primary-rgb), 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -607,7 +614,7 @@
   overflow: hidden;
   margin-top: -1px;
   padding-top: clamp(6rem, 8vw, 7.5rem);
-  padding-bottom: 4.8rem;
+  padding-bottom: clamp(3.5rem, 7vw, 4.8rem);
   background:
     linear-gradient(
       180deg,
@@ -691,7 +698,7 @@
 .about-structure__row {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(var(--structure-columns), minmax(0, 19rem));
+  grid-template-columns: repeat(var(--structure-columns), minmax(0, min(100%, 19rem)));
   justify-content: center;
   column-gap: clamp(3rem, 6vw, 5rem);
   row-gap: clamp(1.6rem, 3.2vw, 2.6rem);
@@ -735,10 +742,18 @@
 
   .about-vision__content {
     align-self: auto;
+    justify-content: center;
   }
 
   .about-vision__copy {
+    width: min(100%, 42rem);
+    max-width: 42rem;
     padding: 0;
+    text-align: center;
+  }
+
+  .about-vision__row--vision .about-vision__copy {
+    text-align: center;
   }
 
   .about-vision__media,
@@ -752,6 +767,16 @@
 }
 
 @media (max-width: 960px) {
+  .about-branches__grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr));
+    max-width: 42rem;
+  }
+
+  .about-branches__grid .about-branch-card:nth-child(n) {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
   .about-values__grid {
     grid-template-columns: 1fr;
   }
@@ -789,7 +814,7 @@
 
   .about-hero__intro {
     min-height: auto;
-    padding: 4rem 0 5.8rem;
+    padding: 3.4rem 0 5.4rem;
   }
 
   .about-hero__media {
@@ -799,6 +824,33 @@
 
   .about-vision {
     margin-top: -4rem;
+  }
+
+  .about-vision__stack {
+    gap: 2.25rem;
+  }
+
+  .about-vision__image-frame {
+    width: min(100%, 24rem);
+  }
+
+  .about-showcase-band::before {
+    background-size: 48rem auto;
+  }
+
+  .about-branches__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 26rem;
+  }
+
+  .about-branch-card__circle {
+    width: clamp(6.6rem, 35vw, 9.5rem);
+    height: clamp(6.6rem, 35vw, 9.5rem);
+  }
+
+  .about-branch-card__name {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
   }
 
   .about-hero__text p,
@@ -838,8 +890,13 @@
   }
 
   .about-pengurus__carousel {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.9rem;
+  }
+
+  .about-pengurus__viewport {
+    grid-column: 1 / -1;
+    order: 1;
   }
 
   .about-pengurus__nav {
@@ -852,7 +909,7 @@
   }
 
   .about-pengurus__slide {
-    order: 1;
+    --card-gap: 0.85rem;
   }
 
   .about-pengurus__nav--next {
@@ -869,5 +926,41 @@
 
   .about-pengurus-card {
     max-width: min(100%, 26rem);
+  }
+}
+
+@media (max-width: 460px) {
+  .about-hero__copy {
+    gap: 1.4rem;
+  }
+
+  .about-hero__text p {
+    font-size: 0.9rem;
+    line-height: 1.72;
+  }
+
+  .about-branches__grid {
+    gap: 1.2rem 0.8rem;
+  }
+
+  .about-branch-card__circle {
+    width: clamp(5.8rem, 38vw, 7.4rem);
+    height: clamp(5.8rem, 38vw, 7.4rem);
+  }
+
+  .about-pengurus-card {
+    padding: 0.85rem;
+  }
+
+  .about-pengurus-card__name {
+    font-size: 0.92rem;
+  }
+
+  .about-pengurus-card__role {
+    font-size: 0.82rem;
+  }
+
+  .about-structure__row {
+    grid-template-columns: minmax(0, 100%);
   }
 }
